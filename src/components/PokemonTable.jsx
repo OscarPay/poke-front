@@ -29,72 +29,12 @@ const PokemonTable = ({ pokemons }) => {
       key: 'types',
       render: (text, record) => (
         <>
-          {text.split(',').map(type => {
-            let color = 'blue'
-
-            switch (type.trim()) {
-              case 'normal':
-                color = 'geekblue'
-                break;
-              case 'fighting':
-                color = 'volcano'
-                break;
-              case 'flying':
-                color = 'gold'
-                break;
-              case 'poison':
-                color = 'purple'
-                break;
-              case 'ground':
-                color = 'orange'
-                break;
-              case 'rock':
-                color = 'magenta'
-                break;
-              case 'bug':
-                color = 'lime'
-                break;
-              case 'ghost':
-                color = 'cyan'
-                break;
-              case 'steel':
-                color = 'green'
-                break;
-              case 'fire':
-                color = 'red'
-                break;
-              case 'water':
-                color = 'blue'
-                break;
-              case 'grass':
-                color = 'green'
-                break;
-              case 'electric':
-                color = 'geekblue'
-                break;
-              case 'psychic':
-                color = 'purple'
-                break;
-              case 'ice':
-                color = 'blue'
-                break;
-              case 'dragon':
-                color = 'gold'
-                break;
-              case 'dark':
-                color = 'purple'
-                break;
-              case 'fairy':
-                color = 'pink'
-                break;
-              default:
-                color = 'blue'
-                break;
-            }
+          {text.map(type => {
+            const {name, color} = type;
             
             return (
-              <Tag color={color} key={type}>
-                {type}
+              <Tag color={color} key={name}>
+                {name}
               </Tag>
             );
           })}
@@ -105,12 +45,14 @@ const PokemonTable = ({ pokemons }) => {
 
   useEffect(() => {
     if (pokemons) {
-      const data = pokemons.map((pokemon) => ({
-        key: pokemon.id,
-        name: pokemon.name,
-        image: pokemon.image,
-        types: pokemon.types,
-      }));
+      const data = pokemons.map((pokemon) => {
+        return {
+          key: pokemon.id,
+          name: pokemon.name,
+          image: pokemon.image,
+          types: pokemon.types
+        }
+      });
 
       setData(data);
     }
