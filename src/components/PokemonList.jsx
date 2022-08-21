@@ -1,9 +1,11 @@
 import PokemonCard from './PokemonCard';
 
 const PokemonList = ({ pokemons }) => {
+  const { data } = pokemons;
+
   return (
     <div className='PokemonList'>
-      {pokemons.map((pokemon) => {
+      {data.map((pokemon) => {
         return (
           <PokemonCard
             key={pokemon.id}
@@ -15,8 +17,5 @@ const PokemonList = ({ pokemons }) => {
   );
 };
 
-PokemonList.defaultProps = {
-  pokemons: Array(10).fill(''),
-};
 
 export default PokemonList;

@@ -19,7 +19,7 @@ const PokemonCard = ({ pokemon }) => {
       cover={<img src={image} alt={name} />}
       extra={<StarButton isFavorite={favorite} onClick={handleOnFavorite} />}
     >
-      <Meta description={types} />
+      <Meta description={types.map(type => type.name).join(', ')} />
     </Card>
   );
 };

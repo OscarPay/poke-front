@@ -45,7 +45,7 @@ const PokemonTable = ({ pokemons }) => {
 
   useEffect(() => {
     if (pokemons) {
-      const data = pokemons.map((pokemon) => {
+      const data = pokemons.data.map((pokemon) => {
         return {
           key: pokemon.id,
           name: pokemon.name,
