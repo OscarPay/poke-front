@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPokemonsWithDetails());
+    dispatch(fetchPokemonsWithDetails({items: 20, page: 1}));
   }, []);
 
   return (

@@ -10,9 +10,9 @@ const initialState = {
 
 export const fetchPokemonsWithDetails = createAsyncThunk(
   'data/fetchPokemonsWithDetails',
-  async (_, { dispatch }) => {
+  async ({items, page}, { dispatch }) => {
     dispatch(setLoading(true));
-    const pokemonsDetailed = await getPokemon();
+    const pokemonsDetailed = await getPokemon(items, page);
     dispatch(setPokemons(pokemonsDetailed));
     dispatch(setLoading(false));
   }
@@ -40,6 +40,5 @@ export const dataSlice = createSlice({
 });
 
 export const { setFavorite, setPokemons } = dataSlice.actions;
-console.log('🚀 ~ file: dataSlice.js ~ line 29 ~ dataSlice', dataSlice);
 
 export default dataSlice.reducer;
